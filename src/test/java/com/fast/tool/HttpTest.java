@@ -1,8 +1,11 @@
 package com.fast.tool;
 
+
 import com.fast.tool.poro.DataBean;
 import com.fast.tool.poro.MapperUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,20 +39,12 @@ import java.nio.charset.StandardCharsets;
         String result = getReturn(conn);
 
 
-        //OutputStream out = conn.getOutputStream();
         System.out.println(result);
 
-        /*
-        *
-        MapperUtil<DataBean> mapperUtil = MAPPER.readValue(result, MapperUtil.class);
-        Object data = mapperUtil.getData();
-        System.out.println(data);
-        * */
 
-
-        MapperUtil<DataBean> mapperUtil = MAPPER.readValue(result, MapperUtil.class);
-        DataBean data = mapperUtil.getData();
-        System.out.println(data);
+        Gson gson = new Gson();
+        MapperUtil<DataBean> one = gson.fromJson(result, new TypeToken<MapperUtil<DataBean>>() {}.getType());
+        System.out.println(one.data.getActorCode());
 
 
 

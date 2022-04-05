@@ -1,16 +1,11 @@
 package com.fast.tool.poro;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
 
-public  class DataBean {
-        /**
-         * actorCode : 9
-         * actor : null
-         * actorMulti : {"address":"f028947","idAddress":"f028947","robustAddr":"f2nlvxccdlhydntnt5zchm6uhhpe6og6oy5dsloii","actorType":"Multiple Signature","balance":"4,066,699.5601 FIL","availableBalance":"1,662,457.994817694 FIL","initialBalance":"4,718,285.7142 FIL","lockingBalance":"2,404,241.565376167 FIL","unlockPeriod":"2020-10-15 22:44:00 to 2023-10-15 22:44:00","approvalThreshold":1,"msgCount":29,"tag":"","key_addr_signers":["f13qcdccijjbjuut23uu3lcg2apgrulgbenb2i7ia"],"createTime":"2020-10-08 03:19:00","lastTransactionTime":"2021-01-09 11:45:30","miners":null,"workerMiners":null}
-         * actorMiner : null
-         * favorStatus : 0
-         * favorAccount : 0
-         */
+import java.util.List;
+@Data
+public  class DataBean  {
 
         private int actorCode;
         private Object actor;
@@ -68,25 +63,7 @@ public  class DataBean {
         }
 
         public static class ActorMultiBean {
-            /**
-             * address : f028947
-             * idAddress : f028947
-             * robustAddr : f2nlvxccdlhydntnt5zchm6uhhpe6og6oy5dsloii
-             * actorType : Multiple Signature
-             * balance : 4,066,699.5601 FIL
-             * availableBalance : 1,662,457.994817694 FIL
-             * initialBalance : 4,718,285.7142 FIL
-             * lockingBalance : 2,404,241.565376167 FIL
-             * unlockPeriod : 2020-10-15 22:44:00 to 2023-10-15 22:44:00
-             * approvalThreshold : 1
-             * msgCount : 29
-             * tag :
-             * key_addr_signers : ["f13qcdccijjbjuut23uu3lcg2apgrulgbenb2i7ia"]
-             * createTime : 2020-10-08 03:19:00
-             * lastTransactionTime : 2021-01-09 11:45:30
-             * miners : null
-             * workerMiners : null
-             */
+
 
             private String address;
             private String idAddress;
