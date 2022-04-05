@@ -1,14 +1,12 @@
-package com.fast.tool.poro;
+package com.fast.tool.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import java.util.List;
-
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MapperUtil<T> {
+public class BaseMapper<T> {
 
 
     private int code;

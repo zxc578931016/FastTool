@@ -1,8 +1,10 @@
 package com.fast.tool;
 
 
-import com.fast.tool.poro.DataBean;
-import com.fast.tool.poro.MapperUtil;
+import com.fast.tool.pojo.BaseMapper;
+import com.fast.tool.pojo.DataBean;
+import com.fast.tool.pojo.MapperUtil;
+import com.fast.tool.utils.JsonUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -11,7 +13,6 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -39,15 +40,13 @@ import java.nio.charset.StandardCharsets;
         String result = getReturn(conn);
 
 
-        System.out.println(result);
 
-
-        Gson gson = new Gson();
-        MapperUtil<DataBean> one = gson.fromJson(result, new TypeToken<MapperUtil<DataBean>>() {}.getType());
-        System.out.println(one.data.getActorCode());
+        /*BaseMapper<DataBean> one = gson.fromJson(result, new TypeToken<MapperUtil<DataBean>>(){}.getType());*/
 
 
 
+        BaseMapper<DataBean> objectClass = JsonUtils.fromJsonObject(result,DataBean.class);
+        System.out.println("状态码"+objectClass.getData().getActorCode());
 
     }
 
