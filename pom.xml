@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.fast</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>tool</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>tool</name>
     <description>FastTool</description>
