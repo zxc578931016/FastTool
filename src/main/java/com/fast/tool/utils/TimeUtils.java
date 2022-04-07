@@ -87,12 +87,12 @@ public class TimeUtils {
 
     //字符串转LocalDateTime对象
     public static LocalDateTime stringToLocalDateTime(String time){
-        return LocalDateTime.parse(time, dayFormatter);
+        return LocalDateTime.parse(time, nowFormatter);
     }
 
     //LocalDateTime对象转字符串
     public static String LocalDateTimeToString(LocalDateTime time){
-        return time.format(dayFormatter);
+        return time.format(nowFormatter);
     }
 
 
