@@ -25,6 +25,13 @@ import java.util.Set;
  * @date 2022/4/5 23:10
  */
 public class HttpUtils {
+
+
+
+    private static final int DEFAULT_CONNECT_TIMEOUT_MILLIS = 10_000;
+    private static final int DEFAULT_READ_TIMEOUT_MILLIS = 60_000;
+
+
     public static String doGet(String url) {
         if (StringUtils.isBlank(url)) {
             throw new RuntimeException("url不能为空！");
@@ -182,18 +189,18 @@ public class HttpUtils {
 
 
 
-    private static HttpsURLConnection configureConnectionHttps(URL target, String method) throws IOException {
+    private static HttpsURLConnection configureConnectionHttps(URL target, String method, int connectTimeoutMillis, int readTimeoutMillis) throws IOException {
         HttpsURLConnection conn = (HttpsURLConnection) target.openConnection();
         conn.setRequestMethod(method);
         conn.setRequestProperty("Content-Type", "application/json");
-        conn.setConnectTimeout(10000);
-        conn.setReadTimeout(60000);
+        conn.setConnectTimeout(connectTimeoutMillis);
+        conn.setReadTimeout(readTimeoutMillis);
         return conn;
     }
 
 
-    public static String HttpsURlJson(URL target, String method) throws IOException {
-        HttpsURLConnection httpsURLConnection = configureConnectionHttps(target, method);
+    public static String HttpsURlJson(URL target, String method,int connectTimeoutMillis, int readTimeoutMillis) throws IOException {
+        HttpsURLConnection httpsURLConnection = configureConnectionHttps(target, method, connectTimeoutMillis, readTimeoutMillis);
         httpsURLConnection.setDoOutput(true);
         OutputStream out = httpsURLConnection.getOutputStream();
         out.write(new byte[0]);
