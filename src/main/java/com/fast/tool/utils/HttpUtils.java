@@ -11,9 +11,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import javax.net.ssl.HttpsURLConnection;
+import java.io.*;
+import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 
@@ -176,5 +178,35 @@ public class HttpUtils {
         }
         return url.deleteCharAt(url.length() - 1).toString();
     }
+
+
+
+
+    private static HttpsURLConnection configureConnectionHttps(URL target, String method) throws IOException {
+        HttpsURLConnection conn = (HttpsURLConnection) target.openConnection();
+        conn.setRequestMethod(method);
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setConnectTimeout(10000);
+        conn.setReadTimeout(60000);
+        return conn;
+    }
+
+
+    public static String HttpsURlJson(URL target, String method) throws IOException {
+        HttpsURLConnection httpsURLConnection = configureConnectionHttps(target, method);
+        httpsURLConnection.setDoOutput(true);
+        OutputStream out = httpsURLConnection.getOutputStream();
+        out.write(new byte[0]);
+        out.flush();
+        out.close();
+        InputStream in = httpsURLConnection.getInputStream();
+        ByteArrayOutputStream resp = new ByteArrayOutputStream();
+        byte[] buf = new byte[4096];
+        int r;
+        while ((r = in.read(buf)) >= 0)
+            resp.write(buf, 0, r);
+        return Arrays.toString(resp.toByteArray());
+    }
+
 
 }
