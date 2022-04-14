@@ -4,6 +4,7 @@ package com.fast.tool.utils;
 import com.fast.tool.pojo.BaseMapper;
 import com.fast.tool.utils.impl.ParameterizedTypeImpl;
 import com.google.gson.Gson;
+
 import java.lang.reflect.Type;
 
 public class JsonUtils {

@@ -123,6 +123,7 @@ public class HttpUtils {
      *
      * @param url        请求路径
      * @param jsonParams json参数 String jsonString = JSON.toJSONString(user);
+     * @return 返回json字符串
      */
     public static String doPost(String url, String jsonParams) {
         // 获得Http客户端

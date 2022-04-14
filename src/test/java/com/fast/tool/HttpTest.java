@@ -3,11 +3,8 @@ package com.fast.tool;
 
 import com.fast.tool.pojo.BaseMapper;
 import com.fast.tool.pojo.DataBean;
-import com.fast.tool.pojo.MapperUtil;
 import com.fast.tool.utils.JsonUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
